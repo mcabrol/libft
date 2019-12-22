@@ -38,7 +38,6 @@ string/ft_strnstr.c	ctype/ft_isprint.c \
 OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)
-	echo
 
 $(NAME): $(OBJ)
 	@ar -rcs $(NAME) $?

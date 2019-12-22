@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../inc/libft.h"
 
 static int	ft_read(const int fd, char **str)
 {
@@ -47,10 +47,10 @@ static int	get_line(char **line, char **end, char **str)
 int			get_next_line(const int fd, char **line)
 {
 	int			i;
-	static char	*str[OPEN_MAX];
+	static char	*str[_SC_OPEN_MAX];
 	char		*end;
 
-	if (fd < 0 || fd > OPEN_MAX || !line || \
+	if (fd < 0 || fd > _SC_OPEN_MAX || !line || \
 			(!str[fd] && !(str[fd] = ft_strnew(sizeof(*str)))))
 		return (-1);
 	end = ft_strchr(str[fd], '\n');
