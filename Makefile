@@ -12,6 +12,7 @@
 
 NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
+INC = -Iinc
 
 SRC = \
 string/ft_memset.c	string/ft_strcmp.c	list/ft_striter.c \
@@ -35,11 +36,11 @@ string/ft_strrchr.c	ctype/ft_isalnum.c	gnl/get_next_line.c \
 string/ft_strstr.c	ctype/ft_isascii.c \
 string/ft_strnstr.c	ctype/ft_isprint.c \
 
-COMPILE.c = $(CC) $(CFLAGS) $(TARGET_ARCH) -c
+COMPILE.c = $(CC) $(CFLAGS) $(INC) $(TARGET_ARCH) -c
 OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)
-
+	
 $(NAME): $(OBJ)
 	@ar -rcs $(NAME)
 
