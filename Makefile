@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = libft.a
-FLAG = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 SRC = \
 string/ft_memset.c	string/ft_strcmp.c	list/ft_striter.c \
