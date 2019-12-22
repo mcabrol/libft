@@ -42,7 +42,7 @@ OBJ = $(SRC:%.c=%.o)
 all: $(NAME)
 	
 $(NAME): $(OBJ)
-	@ar -rcs $(NAME)
+	@ar -rc $(NAME) $?
 
 clean:
 	@$(RM) $(OBJ)
