@@ -17,6 +17,10 @@
 # include <unistd.h>
 # include <limits.h>
 
+# if defined(__linux__)
+    # define OPEN_MAX _SC_OPEN_MAX
+# endif
+
 int		get_next_line(const int fd, char **line);
 
 #endif
