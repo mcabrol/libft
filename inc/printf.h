@@ -14,7 +14,6 @@
 # define LIBFTPRINTF_H
 
 # include <stdarg.h>
-# include <limits.h>
 # include <wchar.h>
 # include "colors.h"
 

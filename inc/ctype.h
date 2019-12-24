@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 30
-# include <limits.h>
+#ifndef CTYPE_H
+# define CTYPE_H
 
-# if defined(__linux__)
-    # define OPEN_MAX _SC_OPEN_MAX
-# endif
-
-int		get_next_line(const int fd, char **line);
+int					ft_toupper(int c);
+int					ft_tolower(int c);
+int					ft_isalpha(int c);
+int					ft_isdigit(int c);
+int					ft_isalnum(int c);
+int					ft_isascii(int c);
+int					ft_isprint(int c);
 
 #endif

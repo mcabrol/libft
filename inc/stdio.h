@@ -10,15 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 30
-# include <limits.h>
+#ifndef STDIO_H
+# define STDIO_H
 
-# if defined(__linux__)
-    # define OPEN_MAX _SC_OPEN_MAX
-# endif
-
-int		get_next_line(const int fd, char **line);
+void				ft_putchar(char c);
+void				ft_putstr(const char *s);
+void				ft_putendl(char const *s);
+void				ft_putnbr(int n);
+void				ft_putchar_fd(char c, int fd);
+void				ft_putstr_fd(char const *s, int fd);
+void				ft_putendl_fd(char const *s, int fd);
+void				ft_putnbr_fd(int n, int fd);
 
 #endif

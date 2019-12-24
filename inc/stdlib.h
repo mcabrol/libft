@@ -10,15 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 30
-# include <limits.h>
+#ifndef STDLIB_H
+# define STDLIB_H
 
-# if defined(__linux__)
-    # define OPEN_MAX _SC_OPEN_MAX
-# endif
-
-int		get_next_line(const int fd, char **line);
+int					ft_atoi(const char *str);
+char				*ft_itoa(int n);
 
 #endif
