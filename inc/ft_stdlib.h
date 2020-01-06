@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcabrol <mcabrol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/10 11:22:11 by mcabrol           #+#    #+#             */
-/*   Updated: 2019/10/22 14:55:31 by mcabrol          ###   ########.fr       */
+/*   Created: 2018/11/27 15:59:23 by mcabrol           #+#    #+#             */
+/*   Updated: 2019/11/08 19:00:30 by mcabrol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef STDLIB_H
+# define STDLIB_H
 
-# include <unistd.h>
-# include <string.h>
-# include <limits.h>
-# include <stdlib.h>
-
-# include "ft_string.h"
-# include "ft_stdio.h"
-# include "ft_stdlib.h"
-# include "ft_ctype.h"
-# include "ft_list.h"
-# include "ft_printf.h"
-# include "get_next_line.h"
+int					ft_atoi(const char *str);
+char				*ft_itoa(int n);
+char			    *ft_itoa_base(unsigned long long nbr, int base);
 
 #endif

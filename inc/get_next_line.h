@@ -13,7 +13,6 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # define BUFF_SIZE 30
-# include <limits.h>
 
 # if defined(__linux__)
     # define OPEN_MAX _SC_OPEN_MAX

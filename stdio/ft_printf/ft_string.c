@@ -63,6 +63,7 @@ void		ft_type_s(va_list arg, t_info *tmp, char *buff)
 	t_padding	padding;
 
 	del = 0;
+	ft_wildcard(tmp, arg);
 	s = (char*)va_arg(arg, long *);
 	if (tmp->precision == -1)
 		s = "";

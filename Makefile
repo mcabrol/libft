@@ -23,12 +23,13 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar -rc $(NAME) $?
+	@ranlib $(NAME)
 
 clean:
-	@$(RM) $(OBJ)
+	@$(RM) -f $(OBJ)
 
 fclean: clean
-	@$(RM) $(NAME)
+	@$(RM) -f $(NAME)
 
 re: fclean all
 

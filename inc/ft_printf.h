@@ -10,11 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef PRINTF_H
+# define PRINTF_H
 
 # include <stdarg.h>
-# include <wchar.h>
 # include "colors.h"
 
 # if defined(__linux__)
@@ -51,6 +50,7 @@ typedef struct		s_padding
 
 typedef	struct		s_info
 {
+	int				fd;
 	int				res;
 	int				buffer;
 	int				hash;
@@ -61,6 +61,8 @@ typedef	struct		s_info
 	int				precision;
 	int				width;
 	int				cast;
+	int				wild;
+	int				dot;
 	char			type;
 }					t_info;
 
@@ -68,6 +70,7 @@ typedef	struct		s_info
 ** ft_printf.c
 */
 
+int					ft_dprintf(int fd, const char *restrict format, ...);
 int					ft_printf(const char *restrict format, ...);
 void				ft_print(va_list arg, t_info *tmp, char *buff);
 
@@ -75,7 +78,8 @@ void				ft_print(va_list arg, t_info *tmp, char *buff);
 ** ft_motor.c
 */
 
-int					ft_start(const char *format, va_list arg, char *buff);
+int					ft_start(const char *format, va_list arg,
+						char *buff, int fd);
 int					ft_stop(char c, t_info *tmp, va_list arg, char *buff);
 
 /*
@@ -181,6 +185,7 @@ void				ft_parse(const char *format, t_info *tmp, int *i);
 int					ft_parse_precision(const char *format, int *i);
 int					ft_parse_cast(const char *format, int *i, int precast);
 void				ft_parse_flag(char flag, t_info *tmp);
+void				ft_wildcard(t_info *tmp, va_list arg);
 
 /*
 ** ft_convert_float.c
@@ -209,13 +214,22 @@ char				*ft_sign(t_info *tmp, t_padding *padding, char *str,
 char				*ft_strtoupper(char *str);
 void				ft_null(t_info *tmp, char **str);
 void				ft_reset_padding(t_padding *padding, char *str);
+char				*clean_name(char *path);
+
+/*
+** ft_debbug.c
+*/
+
+void				ft_print_info(t_info *tmp);
+void				ft_print_padding(t_padding padding);
 
 /*
 ** ft_init.c
 */
 
-t_info				ft_init_tmp(int res, int buffsize);
+t_info				ft_init_tmp(int res, int buffsize, int fd);
 t_padding			ft_init_padding(void);
 t_sign				ft_init_sign(void);
+t_info				ft_init_start(int fd);
 
 #endif

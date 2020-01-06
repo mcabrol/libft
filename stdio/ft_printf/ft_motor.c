@@ -6,25 +6,24 @@
 /*   By: bsuarez- <bsuarez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/21 15:08:08 by bsuarez-          #+#    #+#             */
-/*   Updated: 2019/09/16 15:01:26 by mcabrol          ###   ########.fr       */
+/*   Updated: 2019/09/29 19:56:02 by mcabrol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_start(const char *format, va_list arg, char *buff)
+int		ft_start(const char *format, va_list arg, char *buff, int fd)
 {
 	int		i;
 	t_info	tmp;
 
 	i = -1;
-	tmp.res = 0;
-	tmp.buffer = 0;
+	tmp = ft_init_start(fd);
 	while (format[++i])
 		if (format[i] == '%')
 		{
 			i++;
-			tmp = ft_init_tmp(tmp.res, tmp.buffer);
+			tmp = ft_init_tmp(tmp.res, tmp.buffer, tmp.fd);
 			while (!ft_stop(format[i], &tmp, arg, buff))
 			{
 				ft_parse(format, &tmp, &i);
@@ -36,7 +35,7 @@ int		ft_start(const char *format, va_list arg, char *buff)
 			ft_colors(format, buff, &i, &tmp);
 		else
 			ft_format(format[i], buff, &tmp);
-	write(1, buff, tmp.res);
+	write(tmp.fd, buff, tmp.res);
 	ft_strdel(&buff);
 	return ((tmp.res) + (BUFFSIZE * tmp.buffer));
 }

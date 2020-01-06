@@ -6,7 +6,7 @@
 /*   By: mcabrol <mcabrol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 11:12:18 by mcabrol           #+#    #+#             */
-/*   Updated: 2019/06/27 13:43:27 by bsuarez-         ###   ########.fr       */
+/*   Updated: 2019/09/29 18:58:44 by mcabrol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,14 @@ void		ft_parse(const char *format, t_info *tmp, int *i)
 		ft_parse_flag(format[(*i)++], tmp);
 	else if (ft_isdigit(format[*i]))
 		tmp->width = ft_parse_precision(format, i);
+	else if (tmp->wild && !tmp->precision)
+	{
+		tmp->width = -1;
+		(*i)++;
+	}
 	else if (format[*i] == '.')
 	{
+		tmp->dot = 1;
 		(*i)++;
 		tmp->precision = ft_parse_precision(format, i);
 	}
@@ -42,6 +48,8 @@ void		ft_parse_flag(char flag, t_info *tmp)
 		tmp->space = 1;
 	else if (flag == '0')
 		tmp->zero = 1;
+	else if (flag == '*')
+		tmp->wild = 1;
 }
 
 int			ft_parse_precision(const char *format, int *i)
@@ -85,4 +93,20 @@ int			ft_parse_cast(const char *format, int *i, int precast)
 	if (precast > (int)cast)
 		return (precast);
 	return (cast);
+}
+
+void		ft_wildcard(t_info *tmp, va_list arg)
+{
+	if (tmp->wild)
+		tmp->wild = va_arg(arg, int);
+	if (tmp->dot == 1)
+	{
+		if (tmp->precision < tmp->wild)
+			tmp->precision = tmp->wild;
+		if (tmp->width < tmp->wild)
+			tmp->width = tmp->wild;
+	}
+	else
+		tmp->width = tmp->wild;
+	tmp->wild = 0;
 }

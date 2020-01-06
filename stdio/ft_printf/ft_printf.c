@@ -6,7 +6,7 @@
 /*   By: mcabrol <mcabrol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/08 14:13:44 by mcabrol           #+#    #+#             */
-/*   Updated: 2019/09/18 13:54:54 by mcabrol          ###   ########.fr       */
+/*   Updated: 2019/09/27 19:10:24 by mcabrol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,23 @@ int		ft_printf(const char *restrict format, ...)
 		return (0);
 	ft_bzero(buff, BUFFSIZE);
 	va_start(arg, format);
-	i = ft_start(format, arg, buff);
+	i = ft_start(format, arg, buff, 1);
+	va_end(arg);
+	return (i);
+}
+
+int		ft_dprintf(int fd, const char *restrict format, ...)
+{
+	va_list			arg;
+	int				i;
+	char			*buff;
+
+	i = 0;
+	if ((buff = (char *)malloc(sizeof(char) * BUFFSIZE)) == NULL)
+		return (0);
+	ft_bzero(buff, BUFFSIZE);
+	va_start(arg, format);
+	i = ft_start(format, arg, buff, fd);
 	va_end(arg);
 	return (i);
 }

@@ -6,16 +6,17 @@
 /*   By: mcabrol <mcabrol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/19 17:13:14 by mcabrol           #+#    #+#             */
-/*   Updated: 2019/09/16 14:47:59 by mcabrol          ###   ########.fr       */
+/*   Updated: 2019/09/29 19:56:59 by mcabrol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_info		ft_init_tmp(int res, int fullbuffer)
+t_info		ft_init_tmp(int res, int fullbuffer, int fd)
 {
 	t_info tmp;
 
+	tmp.fd = fd;
 	tmp.res = res;
 	tmp.buffer = fullbuffer;
 	tmp.hash = 0;
@@ -26,6 +27,8 @@ t_info		ft_init_tmp(int res, int fullbuffer)
 	tmp.width = 0;
 	tmp.precision = 0;
 	tmp.cast = 0;
+	tmp.wild = 0;
+	tmp.dot = 0;
 	tmp.type = 0;
 	return (tmp);
 }
@@ -48,4 +51,14 @@ t_sign		ft_init_sign(void)
 	sign.dd = 0;
 	sign.u = 0;
 	return (sign);
+}
+
+t_info		ft_init_start(int fd)
+{
+	t_info tmp;
+
+	tmp.fd = fd;
+	tmp.buffer = 0;
+	tmp.res = 0;
+	return (tmp);
 }

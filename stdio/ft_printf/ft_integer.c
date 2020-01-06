@@ -94,6 +94,7 @@ void		ft_type_d(va_list arg, t_info *tmp, char *buff)
 	t_padding	padding;
 	char		*mem;
 
+	ft_wildcard(tmp, arg);
 	del = 0;
 	mem = NULL;
 	di = ft_cast_d(tmp, arg);
